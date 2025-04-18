@@ -2,22 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Picture Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Visual Gallery</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      background-color: #f9f9f9;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #fff;
     }
 
     header {
-      background-color: #4CAF50;
-      color: white;
+      background: linear-gradient(to right, #00b4db, #0083b0);
       text-align: center;
-      padding: 1rem 0;
-      font-size: 1.8rem;
+      padding: 1.5rem 1rem;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
       letter-spacing: 1px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
     .gallery {
@@ -28,64 +36,58 @@
     }
 
     .card {
-      background-color: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
       overflow: hidden;
-      text-align: center;
-      transition: transform 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: scale(1.03);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
 
     .card img {
       width: 100%;
-      height: auto;
+      height: 180px;
+      object-fit: cover;
       display: block;
-      cursor: pointer;
     }
 
     .card-title {
       padding: 1rem;
       font-size: 1.1rem;
-      font-weight: bold;
+      text-align: center;
+      color: #00e676;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    Silverspoon
-  </header>
+  <header>My Visual Gallery</header>
 
   <div class="gallery">
-    <!-- Card 1 -->
+    <!-- 🔁 Picture Card -->
     <div class="card">
-      <a href="https://example.com/link1" target="_blank">
-        <img src="https://via.placeholder.com/300x200.png?text=Picture+1" alt="Picture 1" />
+      <a href="https://example.com/your-link" target="_blank">
+        <img src="https://via.placeholder.com/400x200.png?text=Sample+1" alt="Image 1">
+        <div class="card-title">Sample Picture 1</div>
       </a>
-      <div class="card-title">Picture 1 Name</div>
     </div>
 
-    <!-- Card 2 -->
+    <!-- 🔁 Copy this block below to add more -->
     <div class="card">
-      <a href="https://example.com/link2" target="_blank">
-        <img src="https://via.placeholder.com/300x200.png?text=Picture+2" alt="Picture 2" />
+      <a href="https://example.com/your-link2" target="_blank">
+        <img src="https://via.placeholder.com/400x200.png?text=Sample+2" alt="Image 2">
+        <div class="card-title">Sample Picture 2</div>
       </a>
-      <div class="card-title">Picture 2 Name</div>
     </div>
-
-    <!-- Card 3 -->
-    <div class="card">
-      <a href="https://example.com/link3" target="_blank">
-        <img src="https://via.placeholder.com/300x200.png?text=Picture+3" alt="Picture 3" />
-      </a>
-      <div class="card-title">Picture 3 Name</div>
-    </div>
-
-    <!-- Add more cards easily by copying the block above -->
 
   </div>
 
