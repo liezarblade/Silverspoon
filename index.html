@@ -21,16 +21,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #003300;
+      background-color: #004d00;
       padding: 1rem 2rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      flex-wrap: wrap;
     }
 
     .logo {
       font-size: 1.8rem;
       font-weight: bold;
       color: #e0ffe0;
-      letter-spacing: 1px;
     }
 
     .nav {
@@ -50,6 +50,26 @@
       color: #ffffff;
     }
 
+    .search-container {
+      width: 100%;
+      padding: 1rem 2rem;
+      background-color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-container input {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background-color: #222;
+      color: #fff;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -62,7 +82,6 @@
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.6s ease;
       border: 2px solid #00ff66;
       box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
     }
@@ -76,7 +95,6 @@
       width: 100%;
       height: 180px;
       object-fit: cover;
-      display: block;
     }
 
     .card-title {
@@ -91,17 +109,23 @@
       color: inherit;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .newly-added {
       display: none;
     }
 
     .show-new .newly-added {
       display: block;
+    }
+
+    .show-new .card:not(.newly-added) {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
     }
   </style>
 </head>
@@ -115,27 +139,33 @@
     </nav>
   </header>
 
-  <div class="gallery" id="gallery">
-    <!-- 10 Old Images -->
-    <!-- 💡 Replace href & src with your real links -->
-    ${[...Array(10)].map((_, i) => `
-    <div class="card">
-      <a href="https://example.com/old${i+1}" target="_blank">
-        <img src="https://picsum.photos/400/200?random=${i+1}" alt="Image ${i+1}">
-        <div class="card-title">Old Picture ${i+1}</div>
-      </a>
-    </div>
-    `).join('')}
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search by name..." onkeyup="searchCards()">
+  </div>
 
-    <!-- 10 Newly Added (hidden until toggled) -->
-    ${[...Array(10)].map((_, i) => `
-    <div class="card newly-added">
-      <a href="https://example.com/new${i+1}" target="_blank">
-        <img src="https://picsum.photos/400/200?random=${i+11}" alt="Image ${i+11}">
-        <div class="card-title">New Picture ${i+11}</div>
+  <div class="gallery" id="gallery">
+    <!-- Image Cards -->
+    <div class="card">
+      <a href="https://example.com/old1" target="_blank">
+        <img src="https://picsum.photos/id/1011/400/200" alt="Old Image 1">
+        <div class="card-title">Old Picture 1</div>
       </a>
     </div>
-    `).join('')}
+    <div class="card">
+      <a href="https://example.com/old2" target="_blank">
+        <img src="https://picsum.photos/id/1012/400/200" alt="Old Image 2">
+        <div class="card-title">Old Picture 2</div>
+      </a>
+    </div>
+    <!-- Add more cards here... -->
+    <!-- 18 more cards -->
+    ${[...Array(18)].map((_, i) => `
+    <div class="card newly-added">
+      <a href="https://example.com/image${i+3}" target="_blank">
+        <img src="https://picsum.photos/id/${1013 + i}/400/200" alt="Image ${i+3}">
+        <div class="card-title">Picture ${i+3}</div>
+      </a>
+    </div>`).join('')}
   </div>
 
   <script>
@@ -145,6 +175,15 @@
 
     function showAll() {
       document.getElementById('gallery').classList.remove('show-new');
+    }
+
+    function searchCards() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').innerText.toLowerCase();
+        card.style.display = title.includes(input) ? 'block' : 'none';
+      });
     }
   </script>
 
