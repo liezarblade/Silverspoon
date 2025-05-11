@@ -51,6 +51,7 @@
       display: flex;
       gap: 1.5rem;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .nav a {
@@ -132,7 +133,8 @@
     .card img {
       width: 100%;
       height: auto;
-      max-height: 300px; /* Optional, adjust as needed */
+      max-height: 300px;
+      object-fit: cover;
     }
 
     .card-title {
@@ -160,6 +162,7 @@
       border-radius: 50%;
       cursor: pointer;
       display: none;
+      z-index: 999;
     }
 
     .scroll-to-top:hover {
@@ -167,7 +170,6 @@
       color: #014d00;
     }
 
-    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -200,9 +202,7 @@
   <div class="gallery" id="gallery">
     <div class="card" id="newlyAdded">
       <a href="https://mega.nz/folder/rEMDjRxZ#UWBoolfxUkoTs3tCgkdIiA" target="_blank">
-        <div class="img-wrapper">
-          <img src="8427b060-64b6-45f0-915c-0ff2c5b5dceb.jpg" alt="Example 1">
-        </div>
+        <img src="8427b060-64b6-45f0-915c-0ff2c5b5dceb.jpg" alt="ImMeganLive">
         <div class="card-title">ImMeganLive</div>
       </a>
     </div>
@@ -213,6 +213,8 @@
         <div class="card-title">Example Image 2</div>
       </a>
     </div>
+
+    <!-- Add more cards below as needed -->
   </div>
 
   <!-- Scroll to Top Button -->
@@ -233,25 +235,21 @@
       });
     }
 
-    // Toggle Dark/Light Mode
+    // Theme Toggle
     function toggleMode() {
       document.body.classList.toggle('light-mode');
     }
 
-    // Scroll to Top Function
+    // Scroll to Top
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Show/Hide Scroll to Top Button
-    window.onscroll = function() {
-      const scrollButton = document.querySelector('.scroll-to-top');
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        scrollButton.style.display = 'block';
-      } else {
-        scrollButton.style.display = 'none';
-      }
-    };
+    // Show/Hide Scroll Button
+    window.addEventListener('scroll', () => {
+      const scrollBtn = document.querySelector('.scroll-to-top');
+      scrollBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
   </script>
 
 </body>
