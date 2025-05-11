@@ -9,18 +9,18 @@
       --bg-color: #121212;
       --text-color: #ffffff;
       --card-bg: #1e1e1e;
-      --highlight: #00ff66;
-      --card-border: #00ff66;
-      --shadow: rgba(0, 255, 102, 0.4);
+      --highlight: #ffd700;
+      --card-border: #ffffff;
+      --shadow: rgba(255, 255, 255, 0.3);
     }
 
     body.light-mode {
       --bg-color: #f5f5f5;
       --text-color: #000000;
       --card-bg: #ffffff;
-      --highlight: #006600;
-      --card-border: #006600;
-      --shadow: rgba(0, 100, 0, 0.2);
+      --highlight: #b8860b;
+      --card-border: #000000;
+      --shadow: rgba(184, 134, 11, 0.2);
     }
 
     body {
@@ -35,7 +35,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #014d00;
+      background-color: #333;
       padding: 1rem 2rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
       flex-wrap: wrap;
@@ -44,7 +44,7 @@
     .logo {
       font-size: 1.8rem;
       font-weight: bold;
-      color: #ccffcc;
+      color: var(--highlight);
     }
 
     .nav {
@@ -54,7 +54,7 @@
     }
 
     .nav a {
-      color: #aaffaa;
+      color: var(--highlight);
       text-decoration: none;
       font-size: 1rem;
       font-weight: 500;
@@ -67,17 +67,17 @@
 
     .toggle-btn {
       background-color: transparent;
-      border: 2px solid #aaffaa;
+      border: 2px solid var(--highlight);
       padding: 5px 10px;
       border-radius: 8px;
-      color: #aaffaa;
+      color: var(--highlight);
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .toggle-btn:hover {
-      background-color: #aaffaa;
-      color: #014d00;
+      background-color: var(--highlight);
+      color: #000;
     }
 
     .search-container {
@@ -108,11 +108,16 @@
       color: #000;
     }
 
+    h2 {
+      padding: 1rem 2rem 0 2rem;
+      color: var(--highlight);
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      padding: 2rem;
+      padding: 1rem 2rem;
     }
 
     .card {
@@ -132,7 +137,7 @@
     .card img {
       width: 100%;
       height: auto;
-      max-height: 300px; /* Optional, adjust as needed */
+      max-height: 300px;
     }
 
     .card-title {
@@ -147,13 +152,12 @@
       color: inherit;
     }
 
-    /* Scroll to Top Button */
     .scroll-to-top {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: #014d00;
-      color: #aaffaa;
+      background-color: #333;
+      color: var(--highlight);
       border: none;
       padding: 10px 15px;
       font-size: 1.2rem;
@@ -163,11 +167,10 @@
     }
 
     .scroll-to-top:hover {
-      background-color: #aaffaa;
-      color: #014d00;
+      background-color: var(--highlight);
+      color: #000;
     }
 
-    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -186,8 +189,9 @@
   <header>
     <div class="logo">TOᗰᗩTO</div>
     <nav class="nav">
-      <a href="#newlyAdded">Newly Added</a>
-      <a href="#home">Home</a>
+      <a href="#latest">Latest Movies</a>
+      <a href="#recent">Recently Added</a>
+      <a href="#content">Content Videos</a>
       <button class="toggle-btn" onclick="toggleMode()">Toggle Theme</button>
     </nav>
   </header>
@@ -196,90 +200,61 @@
     <input type="text" id="searchInput" placeholder="Search by name..." onkeyup="searchCards()">
   </div>
 
-
-<div class="gallery" id="gallery">
-
-  <div class="card" id="newlyAdded">
-      <a href="https://mega.nz/folder/rEMDjRxZ#UWBoolfxUkoTs3tCgkdIiA" target="_blank">
-        <div class="img-wrapper">
-          <img src="8427b060-64b6-45f0-915c-0ff2c5b5dceb.jpg" alt="ImMeganLive">
-        </div>
-        <div class="card-title">ImMeganLive</div>
+  <h2 id="latest">LATEST MOVIES</h2>
+  <div class="gallery">
+    <div class="card">
+      <a href="https://example.com/latest1" target="_blank">
+        <img src="https://picsum.photos/id/1015/400/200" alt="Movie 1">
+        <div class="card-title">Movie 1</div>
       </a>
     </div>
-  <div class="card">
-      <a href="https://mega.nz/folder/gRJAgaoK#N6MxRCY9G-OYfJp4POHOIg/folder/REBjUDDZ" target="_blank">
-        <img src="a20bd264-bb99-4a6b-b7bb-e9a4067e1dd0.jpg" alt="raelilblack">
-        <div class="card-title">raelilblack</div>
+    <div class="card">
+      <a href="https://example.com/latest2" target="_blank">
+        <img src="https://picsum.photos/id/1016/400/200" alt="Movie 2">
+        <div class="card-title">Movie 2</div>
       </a>
     </div>
-
-  <div class="card" id="newlyAdded">
-    <a href="https://mega.nz/folder/lG1ngQjC#kgM0p837BoyctreUWOYGRA/folder/0OlUGDZT" target="_blank">
-      <div class="img-wrapper">
-        <img src="187c5487-51c5-4596-a85a-f74ccebfdcc9.jpg" alt="Rosmegas">
-      </div>
-      <div class="card-title">Rosmegas</div>
-    </a>
   </div>
 
-  <div class="card" id="newlyAdded">
-    <a href="https://mega.nz/folder/IqUEgAaY#uFZbpQLcz9zrl9iEpJ2QuA" target="_blank">
-      <div class="img-wrapper">
-        <img src="c445476d-9e9c-464e-a8d0-6c56905f2ecf.jpg" alt="Lola x yummy">
-      </div>
-      <div class="card-title">Lola x yummy</div>
-    </a>
+  <h2 id="recent">RECENTLY ADDED</h2>
+  <div class="gallery">
+    <div class="card">
+      <a href="https://example.com/recent1" target="_blank">
+        <img src="https://picsum.photos/id/1020/400/200" alt="Recent 1">
+        <div class="card-title">Recent Add 1</div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="https://example.com/recent2" target="_blank">
+        <img src="https://picsum.photos/id/1021/400/200" alt="Recent 2">
+        <div class="card-title">Recent Add 2</div>
+      </a>
+    </div>
   </div>
 
-  <div class="card" id="newlyAdded">
-    <a href="https://mega.nz/folder/MjFijI7Q#FMYdWeXqHE4FWh9AL5nrUA" target="_blank">
-      <div class="img-wrapper">
-        <img src="be12e7d6-b926-4879-8249-1ffe493d3be1.jpg" alt="LaDanies">
-      </div>
-      <div class="card-title">LaDanies</div>
-    </a>
+  <h2 id="content">CONTENT VIDEOS</h2>
+  <div class="gallery">
+    <div class="card">
+      <a href="https://example.com/content1" target="_blank">
+        <img src="https://picsum.photos/id/1030/400/200" alt="Content 1">
+        <div class="card-title">Content Vid 1</div>
+      </a>
+    </div>
+    <div class="card">
+      <a href="https://example.com/content2" target="_blank">
+        <img src="https://picsum.photos/id/1031/400/200" alt="Content 2">
+        <div class="card-title">Content Vid 2</div>
+      </a>
+    </div>
   </div>
 
-  <div class="card" id="newlyAdded">
-    <a href="https://mega.nz/folder/RwIHULaY#GAIsOgDQOykMRP6FLA7_sw" target="_blank">
-      <div class="img-wrapper">
-        <img src="4e1b55c9-8ea9-42e0-aa50-594a9455b1fb.jpg" alt="Spookyana">
-      </div>
-      <div class="card-title">Spookyana</div>
-    </a>
-  </div>
-
-  <div class="card" id="newlyAdded">
-    <a href="https://mega.nz/folder/sYgBVCqD#5oNo7ipsYm6nKy1GCH-BRA" target="_blank">
-      <div class="img-wrapper">
-        <img src="061449fc-c49b-4c9c-a642-77073172b09e.jpg" alt="AngelsYoungs">
-      </div>
-      <div class="card-title">AngelsYoungs</div>
-    </a>
-  </div>
-
-  <div class="card" id="newlyAdded">
-    <a href="https://mega.nz/folder/2B0BkayC#ptbCOXfJAnJeWCzXHNBcNw" target="_blank">
-      <div class="img-wrapper">
-        <img src="a4a64970-fc10-4bb0-a729-e4ffe49f02d4.jpg" alt="EmjayPlays">
-      </div>
-      <div class="card-title">EmjayPlays</div>
-    </a>
-  </div>
-
-</div>
-
-
-  <!-- Scroll to Top Button -->
   <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
 
-  <footer style="text-align:center; padding:1rem; background-color:#014d00; color:#aaffaa;">
+  <footer style="text-align:center; padding:1rem; background-color:#333; color:var(--highlight);">
     © 2025 TOᗰᗩTO Gallery | All rights reserved.
   </footer>
 
   <script>
-    // Search Function
     function searchCards() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const cards = document.querySelectorAll('.card');
@@ -289,17 +264,14 @@
       });
     }
 
-    // Toggle Dark/Light Mode
     function toggleMode() {
       document.body.classList.toggle('light-mode');
     }
 
-    // Scroll to Top Function
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Show/Hide Scroll to Top Button
     window.onscroll = function() {
       const scrollButton = document.querySelector('.scroll-to-top');
       if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
@@ -309,6 +281,5 @@
       }
     };
   </script>
-
 </body>
-</html> 
+</html>
