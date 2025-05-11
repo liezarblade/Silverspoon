@@ -146,15 +146,49 @@
       text-decoration: none;
       color: inherit;
     }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #014d00;
+      color: #aaffaa;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+    }
+
+    .scroll-to-top:hover {
+      background-color: #aaffaa;
+      color: #014d00;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">PICSQUE</div>
+    <div class="logo">ₚᵢCₛQᵤₑ</div>
     <nav class="nav">
-      <a href="#">Newly Added</a>
-      <a href="#">Home</a>
+      <a href="#newlyAdded">Newly Added</a>
+      <a href="#home">Home</a>
       <button class="toggle-btn" onclick="toggleMode()">Toggle Theme</button>
     </nav>
   </header>
@@ -164,7 +198,7 @@
   </div>
 
   <div class="gallery" id="gallery">
-    <div class="card">
+    <div class="card" id="newlyAdded">
       <a href="https://example.com/pic1" target="_blank">
         <img src="https://picsum.photos/id/1015/400/200" alt="Example 1">
         <div class="card-title">Example Image 1</div>
@@ -179,7 +213,15 @@
     </div>
   </div>
 
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+  <footer style="text-align:center; padding:1rem; background-color:#014d00; color:#aaffaa;">
+    © 2025 PICSQUE Gallery | All rights reserved.
+  </footer>
+
   <script>
+    // Search Function
     function searchCards() {
       const input = document.getElementById('searchInput').value.toLowerCase();
       const cards = document.querySelectorAll('.card');
@@ -189,9 +231,25 @@
       });
     }
 
+    // Toggle Dark/Light Mode
     function toggleMode() {
       document.body.classList.toggle('light-mode');
     }
+
+    // Scroll to Top Function
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Show/Hide Scroll to Top Button
+    window.onscroll = function() {
+      const scrollButton = document.querySelector('.scroll-to-top');
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollButton.style.display = 'block';
+      } else {
+        scrollButton.style.display = 'none';
+      }
+    };
   </script>
 
 </body>
