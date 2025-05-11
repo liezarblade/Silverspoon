@@ -51,7 +51,6 @@
       display: flex;
       gap: 1.5rem;
       align-items: center;
-      flex-wrap: wrap;
     }
 
     .nav a {
@@ -133,8 +132,7 @@
     .card img {
       width: 100%;
       height: auto;
-      max-height: 300px;
-      object-fit: cover;
+      max-height: 300px; /* Optional, adjust as needed */
     }
 
     .card-title {
@@ -162,7 +160,6 @@
       border-radius: 50%;
       cursor: pointer;
       display: none;
-      z-index: 999;
     }
 
     .scroll-to-top:hover {
@@ -170,6 +167,7 @@
       color: #014d00;
     }
 
+    /* Mobile Responsiveness */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
@@ -202,7 +200,9 @@
   <div class="gallery" id="gallery">
     <div class="card" id="newlyAdded">
       <a href="https://mega.nz/folder/rEMDjRxZ#UWBoolfxUkoTs3tCgkdIiA" target="_blank">
-        <img src="8427b060-64b6-45f0-915c-0ff2c5b5dceb.jpg" alt="ImMeganLive">
+        <div class="img-wrapper">
+          <img src="8427b060-64b6-45f0-915c-0ff2c5b5dceb.jpg" alt="Example 1">
+        </div>
         <div class="card-title">ImMeganLive</div>
       </a>
     </div>
@@ -213,8 +213,6 @@
         <div class="card-title">Example Image 2</div>
       </a>
     </div>
-
-    <!-- Add more cards below as needed -->
   </div>
 
   <!-- Scroll to Top Button -->
@@ -235,22 +233,26 @@
       });
     }
 
-    // Theme Toggle
+    // Toggle Dark/Light Mode
     function toggleMode() {
       document.body.classList.toggle('light-mode');
     }
 
-    // Scroll to Top
+    // Scroll to Top Function
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Show/Hide Scroll Button
-    window.addEventListener('scroll', () => {
-      const scrollBtn = document.querySelector('.scroll-to-top');
-      scrollBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
-    });
+    // Show/Hide Scroll to Top Button
+    window.onscroll = function() {
+      const scrollButton = document.querySelector('.scroll-to-top');
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollButton.style.display = 'block';
+      } else {
+        scrollButton.style.display = 'none';
+      }
+    };
   </script>
 
 </body>
-</html>
+</html> 
