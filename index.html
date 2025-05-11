@@ -3,13 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SILVERSPOON Gallery</title>
+  <title>PICSQUE</title>
   <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --card-bg: #1e1e1e;
+      --highlight: #00ff66;
+      --card-border: #00ff66;
+      --shadow: rgba(0, 255, 102, 0.4);
+    }
+
+    body.light-mode {
+      --bg-color: #f5f5f5;
+      --text-color: #000000;
+      --card-bg: #ffffff;
+      --highlight: #006600;
+      --card-border: #006600;
+      --shadow: rgba(0, 100, 0, 0.2);
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #121212;
-      color: #ffffff;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     header {
@@ -31,6 +50,7 @@
     .nav {
       display: flex;
       gap: 1.5rem;
+      align-items: center;
     }
 
     .nav a {
@@ -43,6 +63,21 @@
 
     .nav a:hover {
       color: #ffffff;
+    }
+
+    .toggle-btn {
+      background-color: transparent;
+      border: 2px solid #aaffaa;
+      padding: 5px 10px;
+      border-radius: 8px;
+      color: #aaffaa;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background-color: #aaffaa;
+      color: #014d00;
     }
 
     .search-container {
@@ -64,6 +99,15 @@
       color: #fff;
     }
 
+    body.light-mode .search-container {
+      background-color: #ddd;
+    }
+
+    body.light-mode .search-container input {
+      background-color: #fff;
+      color: #000;
+    }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -72,17 +116,17 @@
     }
 
     .card {
-      background-color: #1e1e1e;
+      background-color: var(--card-bg);
       border-radius: 12px;
       overflow: hidden;
-      border: 2px solid #00ff66;
-      box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+      border: 2px solid var(--card-border);
+      box-shadow: 0 0 15px var(--shadow);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
+      box-shadow: 0 0 25px var(--shadow);
     }
 
     .card img {
@@ -95,7 +139,7 @@
       padding: 1rem;
       font-size: 1.1rem;
       text-align: center;
-      color: #00e676;
+      color: var(--highlight);
     }
 
     a {
@@ -107,10 +151,11 @@
 <body>
 
   <header>
-    <div class="logo">SILVERSPOON</div>
+    <div class="logo">PICSQUE</div>
     <nav class="nav">
       <a href="#">Newly Added</a>
       <a href="#">Home</a>
+      <button class="toggle-btn" onclick="toggleMode()">Toggle Theme</button>
     </nav>
   </header>
 
@@ -119,7 +164,6 @@
   </div>
 
   <div class="gallery" id="gallery">
-    <!-- Example Picture 1 -->
     <div class="card">
       <a href="https://example.com/pic1" target="_blank">
         <img src="https://picsum.photos/id/1015/400/200" alt="Example 1">
@@ -127,7 +171,6 @@
       </a>
     </div>
 
-    <!-- Example Picture 2 -->
     <div class="card">
       <a href="https://example.com/pic2" target="_blank">
         <img src="https://picsum.photos/id/1025/400/200" alt="Example 2">
@@ -144,6 +187,10 @@
         const title = card.querySelector('.card-title').innerText.toLowerCase();
         card.style.display = title.includes(input) ? 'block' : 'none';
       });
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
     }
   </script>
 
